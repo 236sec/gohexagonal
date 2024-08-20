@@ -13,6 +13,7 @@ func CreateNewCustomerRepository(db *gorm.DB) CustomerRepository {
 }
 
 func (c customerRepositoryDB) GetAll() ([]Customer, error) {
+
 	return nil, nil
 }
 
