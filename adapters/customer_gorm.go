@@ -22,6 +22,14 @@ func (r *customerRepositoryDB) FindById() (*core.Customer, error) {
 	return nil, nil
 }
 
-func (r *customerRepositoryDB) Create() (*core.Customer, error) {
-	return nil,nil
+func (r *customerRepositoryDB) Create(customer core.CreateCustomerDto) (error) {
+	newcustomer := core.Customer{
+		Name: customer.Name,
+		Email: customer.Email,
+		Password: customer.Password,
+	}
+	if result := r.db.Create(&newcustomer); result.Error != nil {
+		return result.Error
+	}
+	return nil
 }

@@ -5,9 +5,9 @@ import (
 )
 
 type Customer struct {
-	CustomerID uint      `db:"customer_id"`
+	ID uint      `db:"customer_id" gorm:"primaryKey"`
 	Name       string    `db:"name"`
-	Email      string    `db:"email"`
+	Email      string    `db:"email" gorm:"unique"`
 	Password   string    `db:"password"`
 	Amount     int       `db:"amount"`
 	CreatedAt  time.Time `db:"created_at"`

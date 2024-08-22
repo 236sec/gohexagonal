@@ -21,10 +21,10 @@ func (h *HttpCustomerHandler) CreateUser(c *fiber.Ctx) error {
     fmt.Println(err)
     return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{"error": "invalid request"})
   }
-	createdCustomer,err := h.service.CreateUser(customer)
+	err := h.service.CreateUser(customer)
   if err != nil {
     return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{"error": err.Error()})
   }
 
-  return c.Status(fiber.StatusCreated).JSON(createdCustomer)
+  return c.Status(fiber.StatusCreated).JSON(customer)
 }

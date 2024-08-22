@@ -3,7 +3,7 @@ package core
 type CustomerService interface {
 	GetAll() ([]Customer, error)
 	FindUser() (*Customer, error)
-	CreateUser(CreateCustomerDto) (*Customer, error)
+	CreateUser(CreateCustomerDto) error
 }
 
 type customerImplement struct {
@@ -22,6 +22,10 @@ func (s *customerImplement) FindUser() (*Customer, error) {
 	return nil, nil
 }
 
-func (s *customerImplement) CreateUser(customer CreateCustomerDto) (*Customer, error) {
-	return nil, nil
+func (s *customerImplement) CreateUser(customer CreateCustomerDto) error {
+	err := s.repo.Create(customer)
+	if err != nil {
+		return err
+	}
+	return nil
 }
