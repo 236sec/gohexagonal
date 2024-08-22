@@ -15,8 +15,10 @@ func main() {
 	if err != nil {
 		fmt.Println("Error occurred:", err)
 	}
+	db.AutoMigrate(&repository.Customer{})
 	fmt.Println("Connected Database")
 	custrepo := repository.CreateNewCustomerRepository(db)
 	custservice := service.NewCustomerService(custrepo)
 	_ = custservice
+
 }

@@ -1,6 +1,10 @@
 package repository
 
-import "time"
+import (
+	"time"
+
+	"github.com/236sec/hexagonal/service"
+)
 
 type Customer struct {
 	CustomerID uint      `db:"customer_id"`
@@ -13,6 +17,7 @@ type Customer struct {
 }
 
 type CustomerRepository interface {
+	Create(service.CustomerResponse) error
 	GetAll() ([]Customer, error)
 	GetById(int) (*Customer, error)
 }

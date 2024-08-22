@@ -10,6 +10,13 @@ func NewCustomerService(r repository.CustomerRepository) CustomerService {
 	return customerService{custRepo: r}
 }
 
+func (s customerService) CreateUser(customer CustomerResponse) (*CustomerResponse, error) {
+	if err := s.custRepo.Create(customer); err != nil {
+		return err
+	}
+	return nil, nil
+}
+
 func (s customerService) GetAll() ([]CustomerResponse, error) {
 	customers, err := s.custRepo.GetAll()
 	if err != nil {
