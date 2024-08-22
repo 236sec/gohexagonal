@@ -9,7 +9,7 @@ type customerRepositoryDB struct {
 }
 
 func CreateNewCustomerRepository(db *gorm.DB) CustomerRepository {
-	return customerRepositoryDB{db: db}
+	return &customerRepositoryDB{db: db}
 }
 
 func (c customerRepositoryDB) GetAll() ([]Customer, error) {
@@ -19,4 +19,8 @@ func (c customerRepositoryDB) GetAll() ([]Customer, error) {
 
 func (c customerRepositoryDB) GetById(id int) (*Customer, error) {
 	return nil, nil
+}
+
+func (c customerRepositoryDB) Create() error {
+	return nil
 }

@@ -23,7 +23,7 @@ func (h *HttpCustomerHandler) CreateUser(c *fiber.Ctx) error {
 	}
 
 	if err := h.service.CreateUser(customer); err != nil {
-		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{"error": "internal server error"})
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{"error": err.Error()})
 	}
 	return c.Status(fiber.StatusCreated).JSON(customer)
 }

@@ -7,14 +7,14 @@ type customerService struct {
 }
 
 func NewCustomerService(r repository.CustomerRepository) CustomerService {
-	return customerService{custRepo: r}
+	return &customerService{custRepo: r}
 }
 
-func (s customerService) CreateUser(customer CustomerResponse) (*CustomerResponse, error) {
+func (s customerService) CreateUser(customer CustomerResponse) error {
 	if err := s.custRepo.Create(customer); err != nil {
 		return err
 	}
-	return nil, nil
+	return nil
 }
 
 func (s customerService) GetAll() ([]CustomerResponse, error) {

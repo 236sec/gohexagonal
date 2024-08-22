@@ -8,7 +8,7 @@ type CustomerResponse struct {
 }
 
 type CustomerService interface {
-	CreateUser(CustomerResponse) (*CustomerResponse, error)
+	CreateUser(CustomerResponse) error
 	GetAll() ([]CustomerResponse, error)
 	FindUser(int) (*CustomerResponse, error)
 }
